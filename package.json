@@ -4,7 +4,7 @@
   "description": "Make static QRIS to dynamic QRIS",
   "main": "index.js",
   "dependencies": {
-    "jimp": "^0.16.1",
+    "jimp": "^1.6.0",
     "qrcode": "^1.4.4"
   },
   "exports": {
@@ -13,7 +13,6 @@
       "require": "./index.js"
     }
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

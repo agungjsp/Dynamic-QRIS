@@ -1,2 +1,5 @@
-export { makeFile } from './src/makeFile';
-export { makeString } from './src/makeString';
+import makeFile from './src/makeFile.js';
+import makeString from './src/makeString.js';
+
+export { makeFile, makeString };
+export default { makeFile, makeString };
