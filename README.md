@@ -3,7 +3,7 @@
 
 Convert static QRIS (Quick Response Code Indonesian Standard) to dynamic QRIS with payment amounts.
 
-[![npm version](https://img.shields.io/npm/v/qris-dinamis.svg)](https://www.npmjs.com/package/qris-dinamis)
+[![npm version](https://img.shields.io/npm/v/@agungjsp/qris-dinamis.svg)](https://www.npmjs.com/package/@agungjsp/qris-dinamis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Security](https://img.shields.io/badge/Security-0%20vulnerabilities-brightgreen.svg)](#security)
 
@@ -21,18 +21,20 @@ Convert static QRIS (Quick Response Code Indonesian Standard) to dynamic QRIS wi
 ## Installation
 
 ```bash
-npm i qris-dinamis
+npm i @agungjsp/qris-dinamis
 ```
+
+> **Note:** This is an improved fork of the original `qris-dinamis` package with security fixes and ES Module support.
 
 ## Import Module
 
 ```javascript
 // CommonJS
-const qrisDinamis = require('qris-dinamis');
+const qrisDinamis = require('@agungjsp/qris-dinamis');
 
 // ES Modules (both syntaxes supported)
-import qrisDinamis from 'qris-dinamis';
-import { makeString, makeFile } from 'qris-dinamis';
+import qrisDinamis from '@agungjsp/qris-dinamis';
+import { makeString, makeFile } from '@agungjsp/qris-dinamis';
 ```
 
 ## Usage
@@ -164,6 +166,7 @@ MIT © [Rachma Azis](https://razisek.com)
 
 ## Support
 
-- 🐛 **Bug reports**: [GitHub Issues](https://github.com/razisek/Qris-Dinamis/issues)
-- 💬 **Questions**: [GitHub Discussions](https://github.com/razisek/Qris-Dinamis/discussions)
-- 📧 **Contact**: [razisek.com](https://razisek.com)
+- 🐛 **Bug reports**: [GitHub Issues](https://github.com/agungjsp/Dynamic-QRIS/issues)
+- 💬 **Questions**: [GitHub Discussions](https://github.com/agungjsp/Dynamic-QRIS/discussions)
+- 📧 **Original author**: [razisek.com](https://razisek.com)
+- 🔧 **Fork maintainer**: [@agungjsp](https://github.com/agungjsp)
