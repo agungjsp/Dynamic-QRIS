@@ -132,25 +132,15 @@ try {
 - Node.js >= 12.0.0
 - The `output/` directory will be created automatically if it doesn't exist
 
+## What's New
+
+🚀 **Latest improvements** include security fixes, ES Module support, and enhanced error handling. 
+
+👉 **See full changelog**: [GitHub Releases](https://github.com/agungjsp/Dynamic-QRIS/releases)
+
 ## Security
 
-This package has **zero security vulnerabilities** and uses the latest secure versions of all dependencies:
-
-- ✅ jimp v1.6.0 (latest secure version)
-- ✅ qrcode v1.5.4 (latest version)
-- ✅ No deprecated dependencies
-
-## Changelog
-
-### v1.0.3 (Latest)
-- ✅ **BREAKING**: Upgraded to jimp v1.6.0 for security
-- ✅ **SECURITY**: Fixed 4 moderate vulnerabilities 
-- ✅ **FIXED**: ES Module imports now work correctly
-- ✅ Improved error handling and null safety
-- ✅ Enhanced QRIS parsing robustness
-
-### v1.0.2
-- Initial stable release
+This package has **zero security vulnerabilities** and uses the latest secure versions of all dependencies.
 
 ## License
 
