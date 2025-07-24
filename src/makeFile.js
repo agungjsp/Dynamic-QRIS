@@ -4,17 +4,29 @@ const { dataQris } = require('../lib');
 const makeString = require('./makeString');
 const fs = require('fs');
 
-const makeFile = async (qris, { nominal, base64 = false, taxtype = 'p', fee = '0', path = '' } = {}) => {
+const makeFile = async (qris, { nominal, base64 = false, taxtype = 'p', fee = '0', path = '', templatePath = 'assets/template.png' } = {}) => {
     try {
+        // Check if we're in a browser environment
+        const isBrowser = typeof window !== 'undefined';
+        
+        if (isBrowser && !base64) {
+            throw new Error('File writing is not supported in browser environment. Use base64: true option instead.');
+        }
+
         const qrisModified = makeString(qris, { nominal, taxtype, fee });
 
-        await QRCode.toFile('tmp.png', qrisModified, { margin: 2, scale: 10 });
+        // Generate QR code as buffer instead of file for browser compatibility
+        const qrBuffer = await QRCode.toBuffer(qrisModified, { 
+            margin: 2, 
+            scale: 10,
+            type: 'png'
+        });
 
         let data = dataQris(qris);
         let text = data.merchantName;
 
-        const qr = await Jimp.read('tmp.png');
-        const image = await Jimp.read('assets/template.png');
+        const qr = await Jimp.read(qrBuffer);
+        const image = await Jimp.read(templatePath);
 
         const w = image.bitmap.width;
         const h = image.bitmap.height;
@@ -57,11 +69,9 @@ const makeFile = async (qris, { nominal, base64 = false, taxtype = 'p', fee = '0
 
         if (base64) {
             const base64Image = await image.getBase64('image/jpeg');
-            fs.unlinkSync('tmp.png');
             return base64Image;
         } else {
             await image.write(path);
-            fs.unlinkSync('tmp.png');
             return path;
         }
     } catch (error) {

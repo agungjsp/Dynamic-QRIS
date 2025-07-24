@@ -73,6 +73,12 @@ const result = await qrisDinamis.makeFile(qris, {
   fee: '500',
   taxtype: 'r' // 'r' for rupiah, 'p' for percent
 });
+
+// Browser usage (returns base64)
+const base64 = await qrisDinamis.makeFile(qris, { 
+  nominal: '5000',
+  base64: true // Required in browser environments
+});
 ```
 
 ## API Reference
@@ -98,14 +104,15 @@ Generates QR code image from dynamic QRIS.
 
 **Parameters:**
 
-| Param     | Type    | Required | Default | Description |
-|-----------|---------|----------|---------|-------------|
-| `qris`    | string  | ✅       | -       | Static QRIS string |
-| `nominal` | string  | ✅       | -       | Payment amount |
-| `base64`  | boolean | ❌       | `false` | Return base64 string instead of file |
-| `path`    | string  | ❌       | auto    | Custom output path |
-| `taxtype` | string  | ❌       | `'p'`   | Tax type: `'r'` (rupiah) or `'p'` (percent) |
-| `fee`     | string  | ❌       | `'0'`   | Fee amount |
+| Param         | Type    | Required | Default | Description |
+|---------------|---------|----------|---------|-------------|
+| `qris`        | string  | ✅       | -       | Static QRIS string |
+| `nominal`     | string  | ✅       | -       | Payment amount |
+| `base64`      | boolean | ❌       | `false` | Return base64 string instead of file |
+| `path`        | string  | ❌       | auto    | Custom output path (Node.js only) |
+| `templatePath`| string  | ❌       | `'assets/template.png'` | Custom template image path |
+| `taxtype`     | string  | ❌       | `'p'`   | Tax type: `'r'` (rupiah) or `'p'` (percent) |
+| `fee`         | string  | ❌       | `'0'`   | Fee amount |
 
 **Returns:** `Promise<string>` - File path or base64 string
 
@@ -134,7 +141,7 @@ try {
 
 ## What's New
 
-🚀 **Latest improvements** include security fixes, ES Module support, and enhanced error handling. 
+🚀 **Latest improvements** include browser compatibility fixes, security updates, and enhanced error handling. 
 
 👉 **See full changelog**: [GitHub Releases](https://github.com/agungjsp/Dynamic-QRIS/releases)
 
