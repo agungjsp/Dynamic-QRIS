@@ -74,11 +74,12 @@ const result = await qrisDinamis.makeFile(qris, {
   taxtype: 'r' // 'r' for rupiah, 'p' for percent
 });
 
-// Browser usage (returns base64)
-const base64 = await qrisDinamis.makeFile(qris, { 
+// Browser usage (returns QR code data URL)
+const qrDataURL = await qrisDinamis.makeFile(qris, { 
   nominal: '5000',
   base64: true // Required in browser environments
 });
+// Note: Browser version returns a simple QR code without template overlay
 ```
 
 ## API Reference
@@ -114,7 +115,7 @@ Generates QR code image from dynamic QRIS.
 | `taxtype`     | string  | ❌       | `'p'`   | Tax type: `'r'` (rupiah) or `'p'` (percent) |
 | `fee`         | string  | ❌       | `'0'`   | Fee amount |
 
-**Returns:** `Promise<string>` - File path or base64 string
+**Returns:** `Promise<string>` - File path (Node.js), base64 string (Node.js), or data URL (Browser)
 
 ## Error Handling
 
@@ -136,8 +137,18 @@ try {
 
 ## Requirements
 
-- Node.js >= 12.0.0
+- Node.js >= 12.0.0 (for full template functionality)
+- Modern browser with ES6 support (for browser usage)
 - The `output/` directory will be created automatically if it doesn't exist
+
+## Browser vs Node.js Differences
+
+| Feature | Node.js | Browser |
+|---------|---------|---------|
+| Template overlay | ✅ Full template with fonts | ❌ Simple QR only |
+| File output | ✅ Supported | ❌ Not supported |
+| Base64/Data URL | ✅ Supported | ✅ Supported |
+| Custom fonts | ✅ Supported | ❌ Not supported |
 
 ## What's New
 

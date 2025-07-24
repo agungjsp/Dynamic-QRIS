@@ -1,6 +1,6 @@
 {
   "name": "@agungjsp/qris-dinamis",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Make static QRIS to dynamic QRIS",
   "main": "index.js",
   "dependencies": {
