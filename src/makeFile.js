@@ -2,7 +2,16 @@ const QRCode = require('qrcode');
 const { Jimp } = require('jimp');
 const { dataQris } = require('../lib');
 const makeString = require('./makeString');
-const fs = require('fs');
+
+// Conditionally require fs only in Node.js environment
+let fs;
+try {
+  if (typeof window === 'undefined') {
+    fs = require('fs');
+  }
+} catch (e) {
+  // fs not available in browser, which is expected
+}
 
 // Browser-specific QR generation (simpler, no template)
 const generateBrowserQR = async (qris, { nominal, taxtype, fee }) => {
@@ -129,3 +138,4 @@ const makeFile = async (qris, { nominal, base64 = false, taxtype = 'p', fee = '0
 };
 
 module.exports = makeFile;
+module.exports.default = makeFile;

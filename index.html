@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRIS Dinamis - Browser Test</title>
+</head>
+<body>
+    <h1>QRIS Dinamis Browser Test</h1>
+    <div id="app">
+        <button id="test-btn">Test QRIS Generation</button>
+        <div id="result"></div>
+        <img id="qr-image" style="display:none; max-width: 300px;" />
+    </div>
+    
+    <script type="module">
+        import qrisDinamis from './index.mjs'
+        
+        document.getElementById('test-btn').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('result');
+            const qrImage = document.getElementById('qr-image');
+            
+            try {
+                resultDiv.innerHTML = 'Generating QRIS...';
+                
+                const staticQris = '00020101021226610014COM.GO-JEK.WWW01189360091439929214560210G9929214560303UMI51440014ID.CO.QRIS.WWW0215ID10253998491870303UMI520456915303360540105802ID5912STMNPBDG US6013BANDUNG BARAT610540553620707033A01630485AD';
+                
+                // Test makeString
+                const dynamicQris = qrisDinamis.makeString(staticQris, {
+                    nominal: '50000'
+                });
+                
+                console.log('Dynamic QRIS:', dynamicQris);
+                
+                // Test makeFile with base64
+                const base64Image = await qrisDinamis.makeFile(staticQris, {
+                    nominal: '25000',
+                    base64: true
+                });
+                
+                qrImage.src = base64Image;
+                qrImage.style.display = 'block';
+                
+                resultDiv.innerHTML = `
+                    <p>✅ QRIS generation successful!</p>
+                    <p>Amount: Rp 25,000</p>
+                    <p>Base64 length: ${base64Image.length}</p>
+                `;
+                
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

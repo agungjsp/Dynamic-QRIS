@@ -24,3 +24,4 @@ const makeString = (qris, { nominal, taxtype = 'p', fee = '0' } = {}) => {
 };
 
 module.exports = makeString;
+module.exports.default = makeString;

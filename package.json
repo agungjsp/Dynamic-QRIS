@@ -1,11 +1,11 @@
 {
   "name": "@agungjsp/qris-dinamis",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Make static QRIS to dynamic QRIS",
   "main": "index.js",
   "dependencies": {
     "jimp": "^1.6.0",
-    "qrcode": "^1.4.4"
+    "qrcode": "^1.5.4"
   },
   "exports": {
     ".": {
@@ -32,5 +32,10 @@
   "bugs": {
     "url": "https://github.com/agungjsp/Dynamic-QRIS/issues"
   },
-  "homepage": "https://github.com/agungjsp/Dynamic-QRIS#readme"
+  "homepage": "https://github.com/agungjsp/Dynamic-QRIS#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "buffer": "^6.0.3",
+    "vite": "^7.0.6"
+  }
 }
